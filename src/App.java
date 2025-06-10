@@ -1,6 +1,9 @@
 import models.Contact;
 import views.*;
 import java.util.Scanner;
+import controllers.*;
+
+import controllers.MenuController;
 public class App {
     public static void main(String[] args) throws Exception {
 
@@ -10,8 +13,8 @@ public class App {
         Contact <String, String> contact4 = new Contact<>("Mateo", "0991650338");
         Contact <String, String> contact5 = new Contact<>("Ferxxo", "0987521466");
         
-        ConsoleView cs = new ConsoleView();
-        cs.displayMenu();
+        MenuController cs = new MenuController();
+        cs.showMenu();
 
 
         
