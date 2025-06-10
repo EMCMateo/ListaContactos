@@ -1,23 +1,48 @@
 package controllers;
+import models.LinkedList;
+import models.Contact;
 
 public class ContactManager {
-    private LinkedList<Contact<T,U>> contacts;
+    private LinkedList<Contact<String,Integer>> contacts;
     
-    public addContact(Contact<T,U> contact){
-
+    public ContactManager() {
+        contacts = new LinkedList<>();
     }
 
-    public Contact<T,U> findContactByName (String name){
-        
+
+    public void addContact(Contact<String,Integer> contact){
+        contacts.appendToTail(contact);
+    }
+
+    public Contact<String,Integer> findContactByName (String name){
+       
+        Contact<String,Integer> current = contacts.getHead() != null ? contacts.getHead().getValue() : null;
+        models.Node<Contact<String,Integer>> node = contacts.getHead();
+        while (node != null) {
+            if (node.getValue().getNameT().equals(name)) {
+                return node.getValue();
+            }
+            node = node.getNext();
+        }
+        return null;
     }
 
     public void deleteContactByName(String name){
-
+        models.Node<Contact<String,Integer>> node = contacts.getHead();
+        while (node != null) {
+            if (node.getValue().getNameT().equals(name)) {
+                contacts.deleteByValue(node.getValue());
+                break;
+            }
+            node = node.getNext();
+        }
     }
 
     public void printList(){
-        for (Contact<T,U> contact : contacts){
-            System.out.println(contact);
+        models.Node<Contact<String,Integer>> node = contacts.getHead();
+        while (node != null) {
+            System.out.println(node.getValue());
+            node = node.getNext();
         }
     }
 }

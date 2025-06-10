@@ -6,15 +6,7 @@ public class LinkedList <T> {
     private int size;
 
 
-
-
-
-
-
-
-    
-
-    public LinkedList(Node<T> head, Node<T> tail, int size) {
+    public LinkedList() {
         this.head = head;
         this.tail = tail;
         this.size = 0;
