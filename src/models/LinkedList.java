@@ -6,20 +6,6 @@ public class LinkedList <T> {
     private int size;
 
 
-
-
-
-
-
-
-    
-
-    public LinkedList(Node<T> head, Node<T> tail, int size) {
-        this.head = head;
-        this.tail = tail;
-        this.size = 0;
-    }
-
     public Node<T> getHead() {
         return head;
     }
@@ -64,9 +50,35 @@ public class LinkedList <T> {
 
     public void deleteByValue(T value){
         if(head != null){
-            
+            if(head.getValue().equals(value)){
+                head = head.getNext();
+                size--;
+                if(head == null) {
+                    tail = null; 
+                }
+                return;
+            }
+
+            Node<T> current = head;
+            while(current.getNext() != null){
+                if(current.getNext().getValue().equals(value)){
+                    current.setNext(current.getNext().getNext());
+                    size--;
+                    if(current.getNext() == null) {
+                        tail = current;
+                    }
+                    return;
+                }
+                current = current.getNext();
+            }
+
         }
     }
+
+    public boolean isEmpty() {
+        return head == null;
+    }
+
 
     
 }
