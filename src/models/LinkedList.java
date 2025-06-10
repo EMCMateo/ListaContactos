@@ -5,6 +5,12 @@ public class LinkedList <T> {
     private Node <T> tail;
     private int size;
 
+    public LinkedList() {
+        this.head = head;
+        this.tail = tail;
+        this.size = 0;
+    }
+
 
     public Node<T> getHead() {
         return head;
