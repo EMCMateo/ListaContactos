@@ -9,14 +9,11 @@ public class ContactManager {
         contacts = new LinkedList<>();
     }
 
-
     public void addContact(Contact<String,String> contact){
         contacts.appendToTail(contact);
     }
 
     public Contact<String,String> findContactByName (String name){
-       
-        Contact<String,String> current = contacts.getHead() != null ? contacts.getHead().getValue() : null;
         models.Node<Contact<String,String>> node = contacts.getHead();
         while (node != null) {
             if (node.getValue().getNameT().equals(name)) {
@@ -28,10 +25,21 @@ public class ContactManager {
     }
 
     public void deleteContactByName(String name){
-        contacts.deleteByValue(new Contact<>(name, null));
+        models.Node<Contact<String,String>> node = contacts.getHead();
+        while (node != null) {
+            if (node.getValue().getNameT().equals(name)) {
+                contacts.deleteByValue(node.getValue());
+                break;
+            }
+            node = node.getNext();
+        }
     }
 
     public void printList(){
+        if (contacts.getHead() == null) {
+            System.out.println("No hay contactos en la lista.");
+            return;
+        }
         models.Node<Contact<String,String>> node = contacts.getHead();
         while (node != null) {
             System.out.println(node.getValue());
