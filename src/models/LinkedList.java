@@ -31,7 +31,7 @@ public class LinkedList <T> {
 
 
     public void appendToTail(T value){
-        Node<T> newNode = new Node<>(null);
+        Node<T> newNode = new Node<>(value);
         if (isEmpty()) {
             head = newNode;
             tail = newNode;
